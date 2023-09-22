@@ -51,7 +51,8 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = validateBookingDetails(userId, bookingId, 1);
 
         if (booking == null) {
-            throw new NotFoundException("booking не должен равен null" ); }
+            throw new NotFoundException("booking не должен равен null");
+        }
         BookingStatus newStatus = approved ? BookingStatus.APPROVED : BookingStatus.REJECTED;
         booking.setStatus(newStatus);
         return BookingMapper.toBookingOut(bookingRepository.save(booking));
@@ -62,7 +63,8 @@ public class BookingServiceImpl implements BookingService {
     public BookingDtoOut findBookingByUserId(Long userId, Long bookingId) {
         Booking booking = validateBookingDetails(userId, bookingId, 2);
         if (booking == null) {
-            throw new NotFoundException("booking не должен равен null" ); }
+            throw new NotFoundException("booking не должен равен null");
+        }
         return BookingMapper.toBookingOut(booking);
     }
 
